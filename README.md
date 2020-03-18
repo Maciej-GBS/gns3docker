@@ -22,6 +22,8 @@ Preferences > Server > Host: 127.0.0.1 | 172.17.0.2
 
 This will fix the connection error which pop ups at startup.
 
+> NOTE: The same can be done through the welcome window, it is usually obstructed by error notifications.
+
 ## Save & Load
 Save and load docker image to file. Allows to share image with others without publishing.
 
