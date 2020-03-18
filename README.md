@@ -3,7 +3,7 @@ GNS3 docker image + some images
 
 ## Requirements
 - docker
-- TightVNC / TigerVNC / RealVNC / Any other VNC client
+- TightVNC / TigerVNC / Remmina / RealVNC / Any other VNC client
 
 ## How To Run
 `$ docker run --rm gns-vnc`
@@ -32,5 +32,5 @@ Save and load docker image to file. Allows to share image with others without pu
 `$ docker load < /tmp/gns-vnc.tar`
 
 # Legal Notice
-This image contains binary files for AGH UST use only. **PLEASE DO NOT SHARE ON PUBLIC CHANNELS**
+Because I have not checked the legal implications in distributing Cisco binaries **PLEASE DO NOT SHARE THIS THROUGH PUBLIC CHANNELS**
 
