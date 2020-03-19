@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Get required packages
 RUN apt-get update -y \
   && apt-get upgrade -y \
-  && apt-get install -y software-properties-common libssl1.1 x11vnc \
+RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
   && apt-get install -y putty telnet vim
 RUN add-apt-repository ppa:gns3/ppa \
   && apt-get update -y \
