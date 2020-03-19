@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Get required packages
 RUN apt-get update -y \
-  && apt-get upgrade -y \
+  && apt-get upgrade -y
 RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
   && apt-get install -y lxterminal telnet vim
 RUN add-apt-repository ppa:gns3/ppa \
