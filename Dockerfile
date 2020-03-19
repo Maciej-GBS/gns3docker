@@ -1,6 +1,8 @@
 FROM ubuntu:19.04
 
-WORKDIR /root
+RUN useradd --create-home gjn
+
+WORKDIR /home/gjn
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -19,17 +21,21 @@ RUN dpkg --add-architecture i386 \
   && apt-get clean
 
 # Clean-up and folder setup
-RUN rm -rf /var/lib/apt/lists/* \
-  && mkdir -p GNS3/images/IOS \
-  && mkdir -p GNS3/projects \
-  && chmod 0777 /root
+RUN rm -rf /var/lib/apt/lists/* 
+
+# As user
+USER gjn
+
+# Make dirs
+RUN mkdir -p GNS3/images/IOS \
+  && mkdir -p GNS3/projects
 
 # Copy files
 COPY start.sh start.sh
 COPY images/* GNS3/images/IOS/
 
 # Set projects as volume
-VOLUME ["/root/GNS3/projects"]
+VOLUME ["/home/gjn/GNS3/projects"]
 
 ENV DEBIAN_FRONTEND=
 
@@ -37,5 +43,5 @@ ENV DEBIAN_FRONTEND=
 EXPOSE 5900 5901 5902
 
 # Start
-ENTRYPOINT ["/root/start.sh"]
+ENTRYPOINT ["/home/gjn/start.sh"]
 
