@@ -1,6 +1,6 @@
 FROM ubuntu:19.04
 
-RUN useradd --create-home gjn
+RUN mkdir -p /home/gjn
 
 WORKDIR /home/gjn
 
@@ -20,15 +20,13 @@ RUN dpkg --add-architecture i386 \
   && apt-get install -y gns3 gns3-gui gns3-server gns3-iou \
   && apt-get clean
 
-# Clean-up and folder setup
+# Clean-up
 RUN rm -rf /var/lib/apt/lists/* 
-
-# As user
-USER gjn
 
 # Make dirs
 RUN mkdir -p GNS3/images/IOS \
-  && mkdir -p GNS3/projects
+  && mkdir -p GNS3/projects \
+  && chmod -R 0777 .
 
 # Copy files
 COPY start.sh start.sh
