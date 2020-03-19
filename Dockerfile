@@ -1,8 +1,6 @@
 FROM ubuntu:19.04
 
-RUN mkdir -p /home/gjn
-
-WORKDIR /home/gjn
+WORKDIR /root
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -26,6 +24,7 @@ RUN rm -rf /var/lib/apt/lists/*
 # Make dirs
 RUN mkdir -p GNS3/images/IOS \
   && mkdir -p GNS3/projects \
+  && echo "127.0.0.1	localhost" >> /etc/hosts \
   && chmod -R 0777 .
 
 # Copy files
@@ -33,7 +32,7 @@ COPY start.sh start.sh
 COPY images/* GNS3/images/IOS/
 
 # Set projects as volume
-VOLUME ["/home/gjn/GNS3/projects"]
+VOLUME ["/root/GNS3/projects"]
 
 ENV DEBIAN_FRONTEND=
 
@@ -41,5 +40,5 @@ ENV DEBIAN_FRONTEND=
 EXPOSE 5900 5901 5902
 
 # Start
-ENTRYPOINT ["/home/gjn/start.sh"]
+ENTRYPOINT ["/root/start.sh"]
 
