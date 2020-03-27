@@ -24,6 +24,8 @@ This will fix the connection error which pop ups at startup.
 
 > NOTE: The same can be done through the welcome window, it is usually obstructed by error notifications.
 
+> **ISSUE**: It may be impossible to switch to telnet terminal in the vnc window. Workaround: remove an item or close a dialog in the GNS3 program, then hovering a mouse will switch the cursor to desired terminal.
+
 ## Save & Load
 Save and load docker image to file. Allows to share image with others without publishing.
 
