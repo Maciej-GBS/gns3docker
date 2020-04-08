@@ -9,8 +9,18 @@ if [ "$1" = "vnc" ] || [ "$2" = "vnc" ]; then
 fi
 
 if [ "$1" = "term" ] || [ "$2" = "term" ]; then
-	lxterminal
+	if [ "$user" != "" ]; then
+		useradd --create-home --user-group --uid $user gienio
+		su gienio -c "lxterminal"
+	else
+		lxterminal
+	fi
 else
-	gns3
+	if [ "$user" != "" ]; then
+		useradd --create-home --user-group --uid $user gienio
+		su gienio -c "gns3"
+	else
+		gns3
+	fi
 fi
 
