@@ -23,12 +23,14 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Make dirs
 RUN mkdir -p GNS3/images/IOS \
-  && mkdir -p GNS3/projects \
-  && chmod -R 0777 .
+  && mkdir -p GNS3/projects
 
 # Copy files
 COPY start.sh start.sh
 COPY images/* GNS3/images/IOS/
+
+# Set privileges
+RUN chmod -R 0777 .
 
 # Set projects as volume
 VOLUME ["/root/GNS3/projects"]
