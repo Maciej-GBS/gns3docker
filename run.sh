@@ -8,6 +8,7 @@ else
 		--rm \
 		-v gjn:/root/GNS3/projects \
 		-it -e DISPLAY=$DISPLAY \
+		-e user=$(id --user) \
 		--user="$(id --user):$(id --group)" \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		gns3:latest $1
