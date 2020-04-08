@@ -8,16 +8,19 @@ if [ "$1" = "vnc" ] || [ "$2" = "vnc" ]; then
 	export DISPLAY
 fi
 
+if [ "$user" != "" ]; then
+	useradd --create-home --user-group --uid $user gienio
+	ln -s /root/GNS3 /home/gienio/GNS3
+fi
+
 if [ "$1" = "term" ] || [ "$2" = "term" ]; then
 	if [ "$user" != "" ]; then
-		useradd --create-home --user-group --uid $user gienio
 		su gienio -c "lxterminal"
 	else
 		lxterminal
 	fi
 else
 	if [ "$user" != "" ]; then
-		useradd --create-home --user-group --uid $user gienio
 		su gienio -c "gns3"
 	else
 		gns3
