@@ -24,7 +24,6 @@ RUN rm -rf /var/lib/apt/lists/*
 # Make dirs
 RUN mkdir -p GNS3/images/IOS \
   && mkdir -p GNS3/projects \
-  && echo "127.0.0.1	localhost" >> /etc/hosts \
   && chmod -R 0777 .
 
 # Copy files
