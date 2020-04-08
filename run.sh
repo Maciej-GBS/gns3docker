@@ -6,7 +6,7 @@ if [ "$1" = "vnc" ]; then
 else
 	docker run \
 		--rm \
-		-v gjnh:/root/GNS3/projects \
+		-v gjn:/root/GNS3/projects \
 		-it -e DISPLAY=$DISPLAY \
 		-e user=$(id --user) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \

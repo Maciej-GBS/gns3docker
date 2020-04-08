@@ -10,6 +10,7 @@ fi
 
 if [ "$user" != "" ]; then
 	useradd --create-home --user-group --uid $user gienio
+	usermod -aG ubridge gienio
 	ln -s /root/GNS3 /home/gienio/GNS3
 fi
 
