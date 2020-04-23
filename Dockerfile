@@ -15,7 +15,7 @@ RUN add-apt-repository ppa:gns3/ppa \
 RUN dpkg --add-architecture i386 \
   && apt-get update -y \
   && apt-get install -y libssl1.1:i386 \
-  && apt-get install -y gns3 gns3-gui gns3-server gns3-iou \
+  && apt-get install -y gns3-gui gns3-server gns3-iou \
   && apt-get clean
 
 # Clean-up
