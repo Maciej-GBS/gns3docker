@@ -11,7 +11,7 @@ RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
   && apt-get install -y lxterminal telnet vim
 RUN add-apt-repository ppa:gns3/ppa \
   && apt-get update -y \
-  && apt-get install -y dynamips ubridge qemu
+  && apt-get install -y dynamips ubridge qemu wireshark
 RUN dpkg --add-architecture i386 \
   && apt-get update -y \
   && apt-get install -y libssl1.1:i386 \
@@ -26,7 +26,7 @@ RUN mkdir -p GNS3/images/IOS \
   && mkdir -p GNS3/projects
 
 # Copy files
-COPY start.sh start.sh
+COPY entry.sh entry.sh
 COPY images/* GNS3/images/IOS/
 
 # Set privileges
@@ -41,5 +41,5 @@ ENV DEBIAN_FRONTEND=
 EXPOSE 5900 5901 5902
 
 # Start
-ENTRYPOINT ["/root/start.sh"]
+ENTRYPOINT ["/root/entry.sh"]
 
