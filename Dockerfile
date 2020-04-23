@@ -11,11 +11,12 @@ RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
   && apt-get install -y lxterminal telnet vim
 RUN add-apt-repository ppa:gns3/ppa \
   && apt-get update -y \
-  && apt-get install -y dynamips ubridge qemu wireshark
+  && apt-get install -y dynamips ubridge qemu
 RUN dpkg --add-architecture i386 \
   && apt-get update -y \
   && apt-get install -y libssl1.1:i386 \
   && apt-get install -y gns3-gui gns3-server gns3-iou \
+  && apt-get install -y wireshark \
   && apt-get clean
 
 # Clean-up
