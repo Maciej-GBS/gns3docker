@@ -4,7 +4,7 @@ WORKDIR /root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Get required packages
+# Get required packages x64 only
 RUN apt-get update -y \
   && apt-get upgrade -y
 RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
@@ -13,12 +13,11 @@ RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
 RUN add-apt-repository ppa:gns3/ppa \
   && apt-get update -y \
   && apt-get install -y dynamips ubridge qemu \
-  && apt-get install -y gns3-gui gns3-server \
-  && apt-get install -y wireshark \
-  && apt-get clean
+  && apt-get install -y wireshark gns3-gui
 
 # Clean-up
-RUN rm -rf /var/lib/apt/lists/* 
+RUN apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # Make dirs
 RUN mkdir -p GNS3/images/IOS \
