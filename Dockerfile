@@ -8,12 +8,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y \
   && apt-get upgrade -y
 RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
-RUN apt-get install -y software-properties-common libssl1.1 x11vnc \
-  && apt-get install -y lxterminal telnet vim
+RUN apt-get install -y libssl1.1 x11vnc lxterminal telnet vim dynamips qemu \
+  && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:gns3/ppa \
-  && apt-get update -y \
-  && apt-get install -y dynamips ubridge qemu \
-  && apt-get install -y wireshark gns3-gui
+  && apt-get install -y ubridge gns3-gui
 
 # Clean-up
 RUN apt-get clean \
